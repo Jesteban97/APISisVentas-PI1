@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SistemaVenta.DAL.Repositorios.Contrato;
+using SistemaVenta.DAL.Repositorios;
 
 namespace SistemaVenta.IOC
 {
@@ -16,6 +18,9 @@ namespace SistemaVenta.IOC
         {
             services.AddDbContext<SellSystemsContext>(options => { options.UseSqlServer(configuration.GetConnectionString("cadenaSQL"));
             });
+
+            services.AddTransient(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+            services.AddScoped<IVentaRepository, VentaRepository>();
         }
     }
 }
