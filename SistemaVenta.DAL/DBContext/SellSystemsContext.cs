@@ -33,7 +33,9 @@ public partial class SellSystemsContext : DbContext
 
     public virtual DbSet<Venta> Venta { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -173,10 +175,10 @@ public partial class SellSystemsContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
                 .HasColumnName("fechaRegistro");
-            entity.Property(e => e.Nombre)
+            entity.Property(e => e.rolDescripcion)
                 .HasMaxLength(50)
                 .IsUnicode(false)
-                .HasColumnName("nombre");
+                .HasColumnName("rolDescripcion");
         });
 
         modelBuilder.Entity<Usuario>(entity =>

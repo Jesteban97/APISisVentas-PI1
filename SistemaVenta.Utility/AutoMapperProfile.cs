@@ -26,14 +26,14 @@ namespace SistemaVenta.Utility
             CreateMap<Usuario, UsuarioDTO>()
                 .ForMember(destino =>
                 destino.RolDescripcion,
-                opt => opt.MapFrom(origen => origen.IdRolNavigation.Nombre)
+                opt => opt.MapFrom(origen => origen.IdRolNavigation.rolDescripcion)
                 )
                 .ForMember(destino => destino.EsActivo, opt => opt.MapFrom(origen => origen.EsActivo == true ? 1 : 0));
 
             CreateMap<Usuario, SesionDTO>()
                 .ForMember(destino =>
                 destino.RolDescripcion,
-                opt => opt.MapFrom(origen => origen.IdRolNavigation.Nombre)
+                opt => opt.MapFrom(origen => origen.IdRolNavigation.rolDescripcion)
                 );
             CreateMap<UsuarioDTO, Usuario>().ForMember(destino =>
                 destino.IdRolNavigation,
